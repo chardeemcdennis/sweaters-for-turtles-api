@@ -10,6 +10,27 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  profile: {
+    name: {
+      given: {
+        type: String,
+        required: true
+      },
+      surname: {
+        type: String,
+        required: true
+      },
+    }
+  },
+  cart: {
+    products: {
+      type: Array,
+      default: [],
+    },
+    total_amount: {
+      type: Number,
+    }
+  },
   token: {
     type: String,
     require: true,
