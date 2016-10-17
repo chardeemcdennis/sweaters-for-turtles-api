@@ -19,14 +19,14 @@ const show = (req, res, next) => {
     .catch(err => next(err));
 };
 
-const create = (req, res, next) => {
-  let User = Object.assign(req.body.User, {
-    _owner: req.currentUser._id,
-  });
-  User.create(User)
-    .then(User => res.json({ User }))
-    .catch(err => next(err));
-};
+// const create = (req, res, next) => {
+//   let User = Object.assign(req.body.User, {
+//     _owner: req.currentUser._id,
+//   });
+//   User.create(User)
+//     .then(User => res.json({ User }))
+//     .catch(err => next(err));
+// };
 
 const addToCart = (req, res, next) => {
   User.findById({ _id: req.params.id, token: req.currentUser.token })
