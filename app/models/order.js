@@ -13,6 +13,10 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     require: true
   },
+  // cancelled: {
+  //   type: Boolean,
+  //   default: false,
+  // },
   token: {
     type: String,
     require: true,
