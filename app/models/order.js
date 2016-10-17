@@ -1,14 +1,21 @@
 'use strict';
 
-// const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
 const orderSchema = new mongoose.Schema({
 
   products: {
     type: Array,
     require: true,
   },
+    //   [
+    // {
+    //   productId: String,
+    //   name: String,
+    //   price: Number,
+    //   quantity: Number,
+    //   image: String,
+    // }
+    // ],
   total_amount: {
     type: Number,
     require: true
@@ -29,10 +36,6 @@ const orderSchema = new mongoose.Schema({
 }, {
   timestamps: true,
 });
-orderSchema.plugin(uniqueValidator);
-}),
-
-
 
 const Order = mongoose.model('Order', orderSchema);
 module.exports = Order;
