@@ -23,7 +23,8 @@ const showUserOrder = (req, res, next) => {
 };
 
 const create = (req, res, next) => {
-  let order = Object.assign(req.body.order, {
+  let order = Object.assign(req, {
+    products: req.body.cart,
     _owner: req.currentUser._id,
   });
 
