@@ -16,15 +16,15 @@ const show = (req, res, next) => {
     .catch(err => next(err));
 };
 
-// const create = (req, res, next) => {
-//   let product = Object.assign(req.body.product);
-//   Product.create(product)
-//     .then(product => res.json({ product }))
-//     .catch(err => next(err));
-// };
+const create = (req, res, next) => {
+  let product = Object.assign(req.body.product);
+  Product.create(product)
+    .then(product => res.json({ product }))
+    .catch(err => next(err));
+};
 
 module.exports = controller({
   index,
   show,
-  // create
+  create
 });
