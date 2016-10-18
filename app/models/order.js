@@ -1,8 +1,8 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const orderSchema = new mongoose.Schema({
 
+const orderSchema = new mongoose.Schema({
   products: {
     type: Array,
     require: true,

@@ -7,24 +7,21 @@ const Order = models.order;
 const authenticate = require('./concerns/authenticate');
 
 const indexUserOrders = (req, res, next) => {
-  Order.find({}, {
-    _owner: req.currentUser._id,
-  })
-    .then(orders => res.json({ orders }))
+  Order.find({ _owner: req.currentUser._id })
+    .then((orders) => res.json({ orders }))
     .catch(err => next(err));
 };
 
-const showUserOrder = (req, res, next) => {
-  Order.findById(req.params.id, {
-    _owner: req.currentUser._id,
-  })
-    .then(order => order ? res.json({ order }) : next())
-    .catch(err => next(err));
-};
+// const showUserOrder = (req, res, next) => {
+//   Order.findById({ _id: req.params.id, token: req.currentUser.token })
+//     .then(order => order ? res.json({ order }) : next())
+//     .catch(err => next(err));
+// };
 
 const create = (req, res, next) => {
   let order = Object.assign(req, {
-    products: req.body.cart,
+    products: req.body.cart.products,
+    total_amount: req.body.cart.total_amount,
     _owner: req.currentUser._id,
   });
 
@@ -49,9 +46,10 @@ const create = (req, res, next) => {
 // };
 
 
+
 module.exports = controller({
   indexUserOrders,
-  showUserOrder,
+  // showUserOrder,
   create,
   // cancel,
 }, { before: [
