@@ -13,9 +13,9 @@ const index = (req, res, next) => {
     .catch(err => next(err));
 };
 
-const show = (req, res, next) => {
-  User.findById({ _id: req.params.id })
-    .then(() => res.json({ cart: req.currentUser.cart }))
+const showCart = (req, res, next) => {
+  User.findById({ _owner: req.currentUser.id })
+    .then((user) => res.json({ user }))
     .catch(err => next(err));
 };
 
@@ -56,7 +56,7 @@ const destroy = (req, res, next) => {
 
 module.exports = controller({
   index,
-  show,
+  showCart,
   // create,
   addToCart,
   destroy,

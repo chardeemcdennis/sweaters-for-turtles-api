@@ -12,6 +12,7 @@ module.exports = require('lib/wiring/routes')
 
 // custom routes
 .resources('carts')
+.get('/cart-show/:id', 'carts#showCart')
 .patch('/cart-update/:id', 'carts#addToCart')
 
 .resources('orders')

@@ -25,8 +25,12 @@ curl --include --request POST http://localhost:3000/users \
     }'
 
 # curl to show cart
-    curl --include --request GET http://localhost:3000/carts/580640585b190618712854b9 \
+    curl --include --request GET http://localhost:3000/carts-show/580640585b190618712854b9 \
       --header "Authorization: Token token=Zd739kOgqsS0oyXxv4EDMmHDCV+4uE9tJ+tKh6DY8Mg=--xbeuwQgjpizRQePI6Dv6cmAcRCBCexJxJ1VWWBV5ZB0="
+
+      curl --include --request GET http://localhost:3000/carts-show/580646218f68261c5b52f4eb \
+        --header "Authorization: Token token=o4S5lCWDOnto92zKnqi9aEBNPG01fcieUkGVejvaSE8=--FnXNzb+BPI0iPNzPO7sMq9rdk3JRbbi7FYtHfdfwRPU="
+
 
 # response from GET to users
 
