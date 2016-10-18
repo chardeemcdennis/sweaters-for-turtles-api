@@ -38,6 +38,8 @@ const userSchema = new mongoose.Schema({
   passwordDigest: String,
 }, {
   timestamps: true,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true }
 });
 
 userSchema.plugin(uniqueValidator);

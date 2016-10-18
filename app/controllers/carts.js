@@ -14,8 +14,8 @@ const index = (req, res, next) => {
 };
 
 const show = (req, res, next) => {
-  User.findById(req.params.id)
-    .then(User => User ? res.json({ User }) : next())
+  User.findById({ _id: req.params.id })
+    .then(() => res.json({ cart: req.currentUser.cart }))
     .catch(err => next(err));
 };
 
