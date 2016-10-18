@@ -14,8 +14,8 @@ const index = (req, res, next) => {
 };
 
 const showCart = (req, res, next) => {
-  User.findById({ _owner: req.currentUser.id })
-    .then((user) => res.json({ user }))
+  User.findById({ _id: req.params.id })
+    .then(() => res.json({ cart: req.currentUser.cart }))
     .catch(err => next(err));
 };
 
