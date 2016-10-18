@@ -19,15 +19,6 @@ const showCart = (req, res, next) => {
     .catch(err => next(err));
 };
 
-// const create = (req, res, next) => {
-//   let User = Object.assign(req.body.User, {
-//     _owner: req.currentUser._id,
-//   });
-//   User.create(User)
-//     .then(User => res.json({ User }))
-//     .catch(err => next(err));
-// };
-
 const addToCart = (req, res, next) => {
   User.findById({ _id: req.params.id, token: req.currentUser.token })
   .then((user) => {
@@ -53,27 +44,22 @@ const removeProduct = (req, res, next) => {
 };
 
 
-const destroy = (req, res, next) => {
-  let search = { _id: req.params.id, _owner: req.currentUser._id };
-  User.findOne(search)
-    .then(user => {
-      if (!user) {
-        return next();
-      }
-
-      return user.remove()
-        .then(() => res.sendStatus(200));
-    })
-    .catch(err => next(err));
+const clearCart = (req, res, next) => {
+  User.findById({ _id: req.params.id, token: req.currentUser.token })
+    .then((user) => {
+    user.cart = [];
+    return user.save();
+  })
+  .then(() => res.sendStatus(200))
+  .catch(err => next(err));
 };
 
 module.exports = controller({
   index,
   showCart,
-  // create,
   addToCart,
   removeProduct,
-  destroy
+  clearCart,
 }, { before: [
   { method: authenticate, except: ['index', 'show'] },
 ], });

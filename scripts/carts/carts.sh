@@ -9,3 +9,11 @@
         "size": "m",
         "image": "turtle.com/bearsweater.jpg"
     }'
+
+    curl --include --request PATCH http://localhost:3000/clear-cart/58065d38e4dfd00d02777a9f \
+      --header "Authorization: Token token=CIufJnRdKr0aUKepdLGvM7B3JUibeu44P3hjvg6nMAk=--uTqh7MuMcCCXfseRqs7/zgnbxbPiv+BSKnA2ODQR9G4=" \
+      --header "Content-Type: application/json" \
+
+
+    curl --include --request DELETE http://localhost:3000/sign-out/$ID \
+      --header "Authorization: Token token=$TOKEN"
