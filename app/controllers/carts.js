@@ -31,14 +31,27 @@ const showCart = (req, res, next) => {
 const addToCart = (req, res, next) => {
   User.findById({ _id: req.params.id, token: req.currentUser.token })
   .then((user) => {
-  user.update({$push: {"products": req.body}});
-  user.cart.products.push(req.body);
+  user.update({$push: {"cart": req.body}});
+  user.cart.push(req.body);
   return user.save();
 })
 
 .then(() => res.sendStatus(200))
 .catch(err => next(err));
 };
+
+
+
+const removeProduct = (req, res, next) => {
+  User.findById({ _id: req.params.id, token: req.currentUser.token })
+    .then((user) => {
+    user.cart.splice(req.body.index);
+    return user.save();
+  })
+  .then(() => res.sendStatus(200))
+  .catch(err => next(err));
+};
+
 
 const destroy = (req, res, next) => {
   let search = { _id: req.params.id, _owner: req.currentUser._id };
@@ -59,7 +72,8 @@ module.exports = controller({
   showCart,
   // create,
   addToCart,
-  destroy,
+  removeProduct,
+  destroy
 }, { before: [
   { method: authenticate, except: ['index', 'show'] },
 ], });
