@@ -15,6 +15,7 @@ module.exports = require('lib/wiring/routes')
 .patch('/cart-update/:id', 'carts#addToCart')
 
 .resources('orders')
+.get('/user-orders/:_owner', 'orders#indexUserOrders')
 .resources('products')
 .resources('profiles')
 
