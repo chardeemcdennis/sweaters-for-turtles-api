@@ -10,6 +10,22 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  profile: {
+    name: {
+      given: {
+        type: String,
+        required: false
+      },
+      surname: {
+        type: String,
+        required: false
+      },
+    }
+  },
+  cart: {
+    type: Array,
+    default: [],
+  },
   token: {
     type: String,
     require: true,
@@ -17,6 +33,8 @@ const userSchema = new mongoose.Schema({
   passwordDigest: String,
 }, {
   timestamps: true,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true }
 });
 
 userSchema.plugin(uniqueValidator);

@@ -10,6 +10,19 @@ module.exports = require('lib/wiring/routes')
 // standards RESTful routes
 .resources('examples')
 
+// custom routes
+.resources('carts')
+.get('/cart-show/:id', 'carts#showCart')
+.patch('/cart-update/:id', 'carts#addToCart')
+.patch('/remove-product/:id', 'carts#removeProduct')
+.patch('/clear-cart/:id', 'carts#clearCart')
+
+.resources('orders')
+.get('/user-orders/:_owner', 'orders#indexUserOrders')
+.delete('/user-orders/:id', 'orders#destroy')
+.resources('products')
+.resources('profiles')
+
 // users of the app have special requirements
 .post('/sign-up', 'users#signup')
 .post('/sign-in', 'users#signin')
