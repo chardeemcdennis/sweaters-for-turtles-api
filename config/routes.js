@@ -19,6 +19,7 @@ module.exports = require('lib/wiring/routes')
 
 .resources('orders')
 .get('/user-orders/:_owner', 'orders#indexUserOrders')
+.delete('/user-orders/:id', 'orders#destroy')
 .resources('products')
 .resources('profiles')
 

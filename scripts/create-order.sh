@@ -1,8 +1,8 @@
 curl --include --request POST http://localhost:3000/orders \
-  --header "Authorization: Token token=eG3RJMJt/vFMDIs9GqZiv4umcvUBALXhmnKnhRpC6iE=--Sf3CzV9NQ5zbfoxpnp7cBQ1wnKwG4fmQ+HDXeE4Yt74=" \
+  --header "Authorization: Token token=oBG0I5FVUDDW1ky6cph2Ew7jfpViO/Rt6fyj5d1NiS0=--zQbxI29h40itV6ABFsuQ4Z+0XAtBazMPQTZIv9o+70k=" \
   --header "Content-Type: application/json" \
   --data '{
-            "_id" : "5802acf09a814efd52b47a38",
+            "_id" : "58065d38e4dfd00d02777a9f",
             "passwordDigest" : "$2a$10$OxFvHZj0o.Pj/6sH88WQm.P1/KyKBKYzboU0/R8A0dLg0HYiQ050i",
             "updatedAt" : "2016-10-18T13:56:51.629Z",
             "createdAt" : "2016-10-15T22:25:52.585Z",

@@ -1,3 +1,3 @@
 
-curl --include --request GET http://localhost:3000/user-orders/5802acf09a814efd52b47a38 \
-  --header "Authorization: Token token=eG3RJMJt/vFMDIs9GqZiv4umcvUBALXhmnKnhRpC6iE=--Sf3CzV9NQ5zbfoxpnp7cBQ1wnKwG4fmQ+HDXeE4Yt74="
+curl --include --request GET http://localhost:3000/user-orders/58065d38e4dfd00d02777a9f \
+  --header "Authorization: Token token=oBG0I5FVUDDW1ky6cph2Ew7jfpViO/Rt6fyj5d1NiS0=--zQbxI29h40itV6ABFsuQ4Z+0XAtBazMPQTZIv9o+70k="
