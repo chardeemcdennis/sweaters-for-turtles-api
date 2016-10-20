@@ -11,7 +11,7 @@ module.exports = require('lib/wiring/routes')
 .resources('examples')
 
 // custom routes
-.resources('carts')
+// .resources('carts')
 .get('/cart-show/:id', 'carts#showCart')
 .patch('/cart-update/:id', 'carts#addToCart')
 .patch('/remove-product/:id', 'carts#removeProduct')
@@ -19,7 +19,7 @@ module.exports = require('lib/wiring/routes')
 .post('/order-create', 'orders#create')
 .post('/make-charge', 'orders#makeCharge')
 
-.resources('orders')
+// .resources('orders')
 .get('/user-orders/:_owner', 'orders#indexUserOrders')
 .delete('/user-orders/:id', 'orders#destroy')
 .resources('products')
