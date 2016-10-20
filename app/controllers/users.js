@@ -28,11 +28,11 @@ const getToken = () =>
 
 const userFilter = { passwordDigest: 0, token: 0 };
 
-const index = (req, res, next) => {
-  User.find({}, userFilter)
-    .then(users => res.json({ users }))
-    .catch(err => next(err));
-};
+// const index = (req, res, next) => {
+//   User.find({}, userFilter)
+//     .then(users => res.json({ users }))
+//     .catch(err => next(err));
+// };
 
 const show = (req, res, next) => {
   User.findById(req.params.id, userFilter)
@@ -112,7 +112,7 @@ const changepw = (req, res, next) => {
 };
 
 module.exports = controller({
-  index,
+  // index,
   show,
   signup,
   signin,

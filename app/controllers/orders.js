@@ -37,7 +37,6 @@ const makeCharge = (req, res, next) => {
   .catch(err => next(err));
 };
 
-
 const indexUserOrders = (req, res, next) => {
   Order.find({ _owner: req.currentUser._id })
     .then((orders) => res.json({ orders }))
@@ -75,8 +74,6 @@ const destroy = (req, res, next) => {
       })
       .catch(err => next(err));
 };
-
-
 
 module.exports = controller({
   indexUserOrders,

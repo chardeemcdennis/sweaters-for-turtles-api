@@ -4,14 +4,13 @@ const controller = require('lib/wiring/controller');
 const models = require('app/models');
 const User = models.user;
 
-
 const authenticate = require('./concerns/authenticate');
 
-const index = (req, res, next) => {
-  User.find()
-    .then(carts => res.json({ carts }))
-    .catch(err => next(err));
-};
+// const index = (req, res, next) => {
+//   User.find()
+//     .then(carts => res.json({ carts }))
+//     .catch(err => next(err));
+// };
 
 const showCart = (req, res, next) => {
   User.findById({ _id: req.params.id })
@@ -31,8 +30,6 @@ const addToCart = (req, res, next) => {
 .catch(err => next(err));
 };
 
-
-
 const removeProduct = (req, res, next) => {
   User.findById({ _id: req.params.id, token: req.currentUser.token })
     .then((user) => {
@@ -42,7 +39,6 @@ const removeProduct = (req, res, next) => {
   .then(() => res.sendStatus(200))
   .catch(err => next(err));
 };
-
 
 const clearCart = (req, res, next) => {
   User.findById({ _id: req.params.id, token: req.currentUser.token })
@@ -55,7 +51,7 @@ const clearCart = (req, res, next) => {
 };
 
 module.exports = controller({
-  index,
+  // index,
   showCart,
   addToCart,
   removeProduct,
