@@ -9,7 +9,7 @@ const stripe = require("stripe")("pk_test_TmOEajfRUrzDTQ37AIJ1A7hp");
 const makeCharge = (req, res, next) => {
 let token = req.body.stripeToken;
   stripe.charges.create({
-    amount: 1000 /*req.body.amount*/, // Amount in cents
+    amount: req.body.amount /*req.body.amount*/, // Amount in cents
     currency: "usd",
     source: token /*req.body.stripeToken*/,
     description: "Example charge",

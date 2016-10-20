@@ -16,6 +16,8 @@ module.exports = require('lib/wiring/routes')
 .patch('/cart-update/:id', 'carts#addToCart')
 .patch('/remove-product/:id', 'carts#removeProduct')
 .patch('/clear-cart/:id', 'carts#clearCart')
+.post('/order-create', 'orders#create')
+.post('/make-charge', 'examples#makeCharge')
 
 .resources('orders')
 .get('/user-orders/:_owner', 'orders#indexUserOrders')
