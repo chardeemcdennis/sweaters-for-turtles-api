@@ -8,15 +8,15 @@ const authenticate = require('./concerns/authenticate');
 const stripe = require("stripe")("pk_test_TmOEajfRUrzDTQ37AIJ1A7hp");
 
 const makeCharge = (req, res, next) => {
-  console.log('req.body is', req.body);
-  console.log('REQUEST STRIPE');
+  // console.log('req.body is', req.body);
+  // console.log('REQUEST STRIPE');
 
   // console.log(req.body.stripe_token);
 
   let token = req.body.stripe_token;
   let amount = (req.body.total_amount * 100);
-  console.log('token is', token);
-  console.log('amount is', amount);
+  // console.log('token is', token);
+  // console.log('amount is', amount);
 
   stripe.charges.create({
     amount: amount, // Amount in cents
