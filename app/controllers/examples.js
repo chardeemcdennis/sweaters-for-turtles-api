@@ -4,20 +4,6 @@ const controller = require('lib/wiring/controller');
 const models = require('app/models');
 const Example = models.example;
 
-const stripe = require("stripe")("pk_test_TmOEajfRUrzDTQ37AIJ1A7hp");
-
-const makeCharge = (req, res, next) => {
-let token = req.body.stripeToken;
-  stripe.charges.create({
-    amount: req.body.amount /*req.body.amount*/, // Amount in cents
-    currency: "usd",
-    source: token /*req.body.stripeToken*/,
-    description: "Example charge",
-  })
-  .then(charge => res.json({ charge }))
-  .catch(err => next(err));
-};
-
 const authenticate = require('./concerns/authenticate');
 
 const index = (req, res, next) => {
@@ -76,7 +62,6 @@ module.exports = controller({
   create,
   update,
   destroy,
-  makeCharge,
 }, { before: [
   { method: authenticate, except: ['index', 'show'] },
 ], });

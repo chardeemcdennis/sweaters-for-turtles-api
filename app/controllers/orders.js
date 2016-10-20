@@ -5,6 +5,38 @@ const models = require('app/models');
 const Order = models.order;
 
 const authenticate = require('./concerns/authenticate');
+const stripe = require("stripe")("pk_test_TmOEajfRUrzDTQ37AIJ1A7hp");
+
+const makeCharge = (req, res, next) => {
+  console.log('req.body is', req.body);
+  console.log('REQUEST STRIPE');
+
+  // console.log(req.body.stripe_token);
+
+  let token = req.body.stripe_token;
+  let amount = (req.body.total_amount * 100);
+  console.log('token is', token);
+  console.log('amount is', amount);
+
+  stripe.charges.create({
+    amount: amount, // Amount in cents
+    currency: "usd",
+    source: token,
+    // description: "Example charge"
+    },
+      function(err/*, charge*/) {
+        if (err && err.type === 'StripeCardError') {
+          console.err(err);
+          // The card has been declined
+    }
+    else {
+      // res.json({ charge });
+      res.sendStatus(200);
+    }
+  })
+  .catch(err => next(err));
+};
+
 
 const indexUserOrders = (req, res, next) => {
   Order.find({ _owner: req.currentUser._id })
@@ -20,8 +52,8 @@ const indexUserOrders = (req, res, next) => {
 
 const create = (req, res, next) => {
   let order = Object.assign(req, {
-    products: req.body.cart.products,
-    total_amount: req.body.cart.total_amount,
+    products: req.body.products,
+    total_amount: req.body.total_amount,
     _owner: req.currentUser._id,
   });
 
@@ -49,6 +81,7 @@ const destroy = (req, res, next) => {
 module.exports = controller({
   indexUserOrders,
   // showUserOrder,
+  makeCharge,
   create,
   destroy,
 }, { before: [
