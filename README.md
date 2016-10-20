@@ -19,15 +19,16 @@ Sweaters for Turtles Client repo: https://github.com/chardeemcdennis/sweaters-fo
 
 ##API Expected Endpoints:
 
-Verb URI |  Pattern | Controller#Action
-POST | /sign-up | users#signup
-POST | /sign-in | users#signin
-DELETE | /sign-out/:id | users#signout
-PATCH | /change-password/:id | users#changepw
-PATCH | /cart-update/:id | carts#addToCart
-GET | /cart-show/:id | carts#showCart
-PATCH | /clear-cart/:id | carts#clearCart
-PATCH | /remove-product/:id | carts#removeProduct
-GET | /user-orders/:_owner | orders#indexUserOrders
-DELETE | /user-orders/:id | orders#destroy
-POST  \ /make-charge | orders#makeCharge
+| Verb   | URI Pattern            | Controller#Action         |
+|:-------|:-----------------------|:--------------------------|
+| POST   | `/sign-up`             | `users#signup`            |
+| POST   | `/sign-in`             | `users#signin`            |
+| DELETE | `/sign-out/:id`        | `users#signout`           |
+| PATCH  | `/change-password/:id` | `users#changepw`          |
+| PATCH  | `/cart-update/:id`     | `carts#addToCart`         |
+| GET    | `/cart-show/:id`       | `carts#showCart`          |
+| PATCH  | `/clear-cart/:id`      | `carts#clearCart`         |
+| PATCH  | `/remove-product/:id`  | `carts#removeProduct`     |
+| GET    | `/user-orders/:_owner` | `orders#indexUserOrders`  |
+| DELETE | `/user-orders/:id`     | `orders#destroy`          |
+| POST   | `/make-charge`         | `orders#makeCharge`       |
