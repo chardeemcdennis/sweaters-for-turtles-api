@@ -24,14 +24,14 @@ const orderSchema = new mongoose.Schema({
   //   type: Boolean,
   //   default: false,
   // },
-  token: {
+  stripe_token: {
     type: String,
     require: true,
   },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    required: false,
   }
 }, {
   timestamps: true,
